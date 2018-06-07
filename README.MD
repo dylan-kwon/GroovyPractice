@@ -1,5 +1,10 @@
 # Groovy
 
+## 실행
+`groovy {file_name}.groovy {arg1} {arg2} {arg3}`
+</br>
+`ex) groovy TestRun.groovy seokchan.kwon`
+
 ## 설치
 
 ### Mac

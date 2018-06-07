@@ -14,6 +14,7 @@ final def connectTimeout = 10_000
 
 //noinspection GroovyAssignabilityCheck
 final def testSetId = this.args[0]
+println("testSetId = $testSetId")
 
 // connection
 URL url = new URL(apiUrl)

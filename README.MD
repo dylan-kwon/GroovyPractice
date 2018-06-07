@@ -87,7 +87,7 @@ String[] array = ['one', 'two', 'three']
 - `[:]`를 사용하여 선언한다.
 - `key`:`value`로 구성된 자료구조다.
 
-```
+```groovy
 def map1 = [:]
 
 def map2 = [

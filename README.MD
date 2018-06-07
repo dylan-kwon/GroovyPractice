@@ -1,10 +1,5 @@
 # Groovy
 
-## 실행
-`> groovy {file_name}.groovy {arg1} {arg2} {arg3}`
-</br>
-`> groovy TestRun.groovy seokchan.kwon 21`
-
 ## 설치
 
 ### Mac
@@ -13,6 +8,12 @@
 
 ### Windows
 `http://groovy-lang.org/download.html`
+
+
+## 실행
+`> groovy {file_name}.groovy {arg1} {arg2} {arg3}`
+</br>
+`> groovy TestRun.groovy seokchan.kwon 21`
 
 
 ## IDE

@@ -12,9 +12,21 @@ final def useCache = true
 final def readTimeout = 10_000
 final def connectTimeout = 10_000
 
-//noinspection GroovyAssignabilityCheck
-final def testSetId = this.args[0]
-println("testSetId = $testSetId")
+def testSetId
+
+try {
+    //noinspection GroovyAssignabilityCheck
+    testSetId = this.args[0]
+
+    if (testSetId == null) {
+        throw new NullPointerException("testSetId is null.")
+    }
+
+    println("testSetId = $testSetId")
+
+} catch (IndexOutOfBoundsException ignored) {
+    throw new NullPointerException("testSetId is null.")
+}
 
 // connection
 URL url = new URL(apiUrl)

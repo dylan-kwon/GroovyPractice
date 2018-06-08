@@ -1,6 +1,5 @@
 # Groovy
 
-<a name="index"></a>
 ## Index
 1. [설치](#install)
     1. [Mac](#install_mac)
@@ -22,34 +21,34 @@
 
 
 <a name="install"></a>
-## [설치](#index) 
+## 설치 
 
 
 <a name="install_mac"></a>
-### [Mac](#index) 
+### Mac 
 `brew install groovy`
 
 
 <a name="install_windows"></a>
-### [Windows](#index)
+### Windows
 `http://groovy-lang.org/download.html`
 
 
 <a name="execute"></a>
-## [실행](#index)
+## 실행
 `> groovy {file_name}.groovy {arg1} {arg2} {arg3}`
 </br>
 `> groovy TestRun.groovy seokchan.kwon 21`
 
 
 <a name="ide"></a>
-## [IDE](#index)
+## IDE
 1. IntelliJ: `https://www.jetbrains.com/idea`
 2. Eclipse: `그냥 킹갓 IntelliJ 씁시다.`
 
 
 <a name="summary"></a>
-## [간단한 특징](#index) 
+## 간단한 특징 
 - 내가 싫어하는 동적 타이핑 언어다.
 - `primitive type`이 없으며, 모두 객체로 간주한다.
 - 세미콜론`;` 생략 가능.
@@ -59,10 +58,10 @@
 - 람다 함수의 기본 변수로 `it` 사용
 
 <a name="syntax"></a>
-## [문법](#index) 
+## 문법 
 
 <a name="string"></a>
-### [1. String](#index) 
+### 1. String 
 - `'string'`
 - `"string"`
 - `/string/`
@@ -95,7 +94,7 @@ String hello7 = $/
 ```
 
 <a name="list"></a>
-### [2. List](#index) 
+### 2. List 
 - `동적 배열`이다.
 - `[]`를 사용하여 선언한다.
 - 타입 제한이 없다.
@@ -109,7 +108,7 @@ def linked = [1, 2, 3] as LinkedList    // java.util.LinkedList
 
 
 <a name="array"></a>
-### [3. Array](#index) 
+### 3. Array 
 - `정적 배열`이다.
 - `[]`를 사용하여 선언한다.
 - 같은 타입의 원소만 허용한다
@@ -120,7 +119,7 @@ String[] array = ['one', 'two', 'three']
 ```
 
 <a name="map"></a>
-### [4. Map](#index) 
+### 4. Map 
 - `[:]`를 사용하여 선언한다.
 - `key`:`value`로 구성된 자료구조다.
 
@@ -146,7 +145,7 @@ map2 -= ['key2': 'value2']
 
 
 <a name="method"></a>
-### [5. Method](#index) 
+### 5. Method 
 
 - 인수가 있는 메소드 호출 시 `()`를 생략할 수 있다.
 - 인수가 없는 메소드 호출 시 `()`를 생략할 수 없다.
@@ -168,7 +167,7 @@ public void println(def message) {
 ```
 
 <a name="if-else"></a>
-### [6. if-else](#index) 
+### 6. if-else 
 - `Java`와 사용법이 같다.
 
 ```groovy
@@ -185,7 +184,7 @@ if ( ... ) {
 
 
 <a name="switch-case"></a>
-### [7. switch-case](#index) 
+### 7. switch-case 
 - 기본적으로는 `Java`와 사용법이 같다.
 - 단, case문에서 아래와 같은 차이가 있다.
 
@@ -219,7 +218,7 @@ switch (value) {
 
 
 <a name="loop"></a>
-### [8. loop](#index)
+### 8. loop
 - Groovy에는 여러 종류의 반복문이 있다.
 - Java와 같은 `for`, `while`문.
 - 모든 종류의 컬렉션에서 작동하는 `for-in`문
@@ -264,7 +263,7 @@ while ( ... ) {
 
 
 <a name="try-catch-finally"></a>
-### [9. try-catch-finally](#index) 
+### 9. try-catch-finally 
 - `Java`와 비슷하다.
 
 ```
@@ -281,5 +280,5 @@ try {
 
 
 <a name="reference"></a>
-## [Reference](#index) 
+## Reference 
 - [http://groovy-lang.org/semantics.html#](http://groovy-lang.org/semantics.html#)

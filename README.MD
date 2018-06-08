@@ -1,27 +1,45 @@
 # Groovy
 
-## 설치
+1. [설치](#install)
+    1. [Mac](#install_mac)
+    2. [Windows](#install_windows)
+2. [실행](#execute)
+3. [IDE](#ide)
+4. [간단한 특징](#summary)
+5. [문법](#syntax)
+    1. [String](#string) 
+    2. [List](#list)
+    3. [Array](#array)
+    4. [Map](#map)
+    5. [Method](#method)
+    6. [if-else](#if-else)
+    7. [switch-case](#switch-case)
+    8. [loop](#loop)
+    9. [try-catch-finally](#try-catch-finally)
+6. [Reference](#Reference)
 
-### Mac
+## 설치 <a name="install"></a>
+
+### Mac <a name="install_mac"></a>
 `brew install groovy`
 
 
-### Windows
+### Windows <a name="install_windows"></a>
 `http://groovy-lang.org/download.html`
 
 
-## 실행
+## 실행 <a name="execute"></a>
 `> groovy {file_name}.groovy {arg1} {arg2} {arg3}`
 </br>
 `> groovy TestRun.groovy seokchan.kwon 21`
 
 
-## IDE
+## IDE <a name="ide"></a>
 1. IntelliJ: `https://www.jetbrains.com/idea`
 2. Eclipse: `그냥 킹갓 IntelliJ 씁시다.`
 
 
-## 간략한 특징
+## 간략한 특징 <a name="summary"></a>
 - 내가 싫어하는 동적 타이핑 언어다.
 - `primitive type`이 없으며, 모두 객체로 간주한다.
 - 세미콜론`;` 생략 가능.
@@ -31,9 +49,9 @@
 - 람다 함수의 기본 변수로 `it` 사용
 
 
-## 문법 
+## 문법 <a name="syntax"></a>
 
-### 1. String
+### 1. String <a name="string"></a>
 - `'string'`
 - `"string"`
 - `/string/`
@@ -65,7 +83,7 @@ String hello7 = $/
 /$ 
 ```
 
-### 2. List
+### 2. List <a name="list"></a>
 - `동적 배열`이다.
 - `[]`를 사용하여 선언한다.
 - 타입 제한이 없다.
@@ -78,7 +96,7 @@ def linked = [1, 2, 3] as LinkedList    // java.util.LinkedList
 ```
 
 
-### 3. Array
+### 3. Array <a name="array"></a>
 - `정적 배열`이다.
 - `[]`를 사용하여 선언한다.
 - 같은 타입의 원소만 허용한다
@@ -89,7 +107,7 @@ String[] array = ['one', 'two', 'three']
 ```
 
 
-### 4. Map
+### 4. Map <a name="map"></a>
 - `[:]`를 사용하여 선언한다.
 - `key`:`value`로 구성된 자료구조다.
 
@@ -114,7 +132,7 @@ map2 -= ['key2': 'value2']
 ```
 
 
-### 5. Method
+### 5. Method <a name="method"></a>
 
 - 인수가 있는 메소드 호출 시 `()`를 생략할 수 있다.
 - 인수가 없는 메소드 호출 시 `()`를 생략할 수 없다.
@@ -135,7 +153,7 @@ public void println(def message) {
 }
 ```
 
-### 6. if-else
+### 6. if-else <a name="if-else"></a>
 - `Java`와 사용법이 같다.
 
 ```groovy
@@ -151,7 +169,7 @@ if ( ... ) {
 ```
 
 
-### 7. switch-case
+### 7. switch-case <a name="switch-case"></a>
 - 기본적으로는 `Java`와 사용법이 같다.
 - 단, case문에서 아래와 같은 차이가 있다.
 
@@ -184,7 +202,7 @@ switch (value) {
 ```
 
 
-### 8. Loop
+### 8. Loop <a name="loop"></a>
 - Groovy에는 여러 종류의 반복문이 있다.
 - Java와 같은 `for`, `while`문.
 - 모든 종류의 컬렉션에서 작동하는 `for-in`문
@@ -228,7 +246,7 @@ while ( ... ) {
 ```
 
 
-### 9. try-catch-finally
+### 9. try-catch-finally <a name="try-catch-finally"></a>
 - `Java`와 비슷하다.
 
 ```

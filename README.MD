@@ -49,7 +49,7 @@
 
 
 <a name="summary"></a>
-## [간략한 특징](#index) 
+## [간단한 특징](#index) 
 - 내가 싫어하는 동적 타이핑 언어다.
 - `primitive type`이 없으며, 모두 객체로 간주한다.
 - 세미콜론`;` 생략 가능.
@@ -168,7 +168,7 @@ public void println(def message) {
 ```
 
 <a name="if-else"></a>
-### 6. if-else 
+### [6. if-else](#index) 
 - `Java`와 사용법이 같다.
 
 ```groovy
@@ -219,7 +219,7 @@ switch (value) {
 
 
 <a name="loop"></a>
-### [8. Loop](#index)
+### [8. loop](#index)
 - Groovy에는 여러 종류의 반복문이 있다.
 - Java와 같은 `for`, `while`문.
 - 모든 종류의 컬렉션에서 작동하는 `for-in`문
@@ -282,4 +282,4 @@ try {
 
 <a name="reference"></a>
 ## [Reference](#index) 
-- `http://groovy-lang.org/semantics.html#`
+- [http://groovy-lang.org/semantics.html#](#http://groovy-lang.org/semantics.html#)

@@ -282,4 +282,4 @@ try {
 
 <a name="reference"></a>
 ## [Reference](#index) 
-- [http://groovy-lang.org/semantics.html#](#http://groovy-lang.org/semantics.html#)
+- [http://groovy-lang.org/semantics.html#](http://groovy-lang.org/semantics.html#)

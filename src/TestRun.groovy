@@ -12,61 +12,77 @@ final def useCache = true
 final def readTimeout = 10_000
 final def connectTimeout = 10_000
 
-def testSetId
-
-try {
-    //noinspection GroovyAssignabilityCheck
-    testSetId = this.args[0]
-
-    if (testSetId == null) {
-        throw new NullPointerException("testSetId is null.")
-    }
-
-    println("testSetId = $testSetId")
-
-} catch (IndexOutOfBoundsException ignored) {
-    throw new NullPointerException("testSetId is null.")
-}
-
 // connection
 URL url = new URL(apiUrl)
-HttpURLConnection request = url.openConnection() as HttpURLConnection
+HttpURLConnection connection = url.openConnection() as HttpURLConnection
 
 // option
-request.setRequestMethod(method)
-request.setDoInput(doInput)
-request.setDoOutput(doOutput)
-request.setUseCaches(useCache)
-request.setDefaultUseCaches(useCache)
-request.setReadTimeout(readTimeout)
-request.setConnectTimeout(connectTimeout)
+connection.setRequestMethod(method)
+connection.setDoInput(doInput)
+connection.setDoOutput(doOutput)
+connection.setUseCaches(useCache)
+connection.setDefaultUseCaches(useCache)
+connection.setReadTimeout(readTimeout)
+connection.setConnectTimeout(connectTimeout)
 
 // header
 def header = [
         'Content-Type': 'application/x-www-form-urlencoded',
         Authorization : 'Basic ' + 'admin:finger'.bytes.encodeBase64().toString()
 ]
-
-for (e in header) {
-    request.setRequestProperty(e.key, e.value)
-}
+setHeader(connection, header)
 
 // body
-def body = "testSetId=$testSetId"
-def os = request.getOutputStream()
+def body = [
+//        'testSetId'  : '68725',
+'testSetId'  : subject.id,
+Authorization: 'Basic ' + 'admin:finger'.bytes.encodeBase64().toString()
+]
+setBody(connection, body)
 
-os.write(body.getBytes())
-os.flush()
-os.close()
+// response
+def responseCode = connection.getResponseCode()
+println("responseCode: $responseCode, $connection.responseMessage")
 
-def responseCode = request.getResponseCode()
-println("responseCode: $responseCode, $request.responseMessage")
-
+// request success
 if (responseCode == HttpURLConnection.HTTP_OK) {
-    def response = makeResponseJson(request)
+    def response = makeResponseJson(connection)
     println("responseJson = ${response.toPrettyString()}")
 }
 
+/**
+ * set header payload.
+ */
+static setHeader(HttpURLConnection connection, Map<String, String> header) {
+    for (e in header) {
+        connection.setRequestProperty(e.key, e.value)
+    }
+}
+
+/**
+ * set body payload.
+ */
+static setBody(HttpURLConnection connection, Map<String, String> body) {
+    def bodyPayload = ""
+
+    for (e in body) {
+        bodyPayload += "$e.key=$e.value&"
+    }
+
+    if (bodyPayload.endsWith('&')) {
+        bodyPayload.substring(0, bodyPayload.length() - 1)
+    }
+
+    def os = connection.getOutputStream()
+    os.write(bodyPayload.toString().getBytes())
+
+    os.flush()
+    os.close()
+}
+
+/**
+ * response payload to Json.
+ */
 static JsonBuilder makeResponseJson(HttpURLConnection connection) {
     def bufferSize = 1024
     def charset = Charset.forName("UTF-8")

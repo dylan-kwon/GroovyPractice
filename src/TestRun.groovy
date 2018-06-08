@@ -7,6 +7,16 @@ import com.intland.codebeamer.persistence.dto.TrackerItemDto;
 final def method = 'POST'
 final def apiUrl = 'http://115.178.77.208:8989/cb/rest/testRun'
 
+final def header = [
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization : 'Basic ' + 'admin:finger'.bytes.encodeBase64().toString()
+]
+
+final def body = [
+        'testSetId': String.valueOf(subject.id)
+//        'testSetId': '68725',
+]
+
 final def doInput = true
 final def doOutput = true
 final def useCache = true
@@ -28,28 +38,21 @@ connection.setReadTimeout(readTimeout)
 connection.setConnectTimeout(connectTimeout)
 
 // header
-def header = [
-        'Content-Type': 'application/x-www-form-urlencoded',
-        Authorization : 'Basic ' + 'admin:finger'.bytes.encodeBase64().toString()
-]
 setHeader(connection, header)
 
 // body
-def body = [
-//        'testSetId'  : '68725',
-'testSetId'  : subject.id,
-Authorization: 'Basic ' + 'admin:finger'.bytes.encodeBase64().toString()
-]
 setBody(connection, body)
 
 // response
 def responseCode = connection.getResponseCode()
 println("responseCode: $responseCode, $connection.responseMessage")
+logger.info("responseCode: $responseCode, $connection.responseMessage")
 
 // request success
 if (responseCode == HttpURLConnection.HTTP_OK) {
     def response = makeResponseJson(connection)
     println("responseJson = ${response.toPrettyString()}")
+    logger.info("responseJson = ${response.toPrettyString()}")
 }
 
 /**
@@ -72,7 +75,7 @@ static setBody(HttpURLConnection connection, Map<String, String> body) {
     }
 
     if (bodyPayload.endsWith('&')) {
-        bodyPayload.substring(0, bodyPayload.length() - 1)
+        bodyPayload = bodyPayload.substring(0, bodyPayload.length() - 1)
     }
 
     def os = connection.getOutputStream()

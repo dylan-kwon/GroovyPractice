@@ -2,6 +2,8 @@ import groovy.json.JsonBuilder
 
 import java.nio.charset.Charset
 
+import com.intland.codebeamer.persistence.dto.TrackerItemDto;
+
 final def method = 'POST'
 final def apiUrl = 'http://115.178.77.208:8989/cb/rest/testRun'
 

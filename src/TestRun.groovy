@@ -3,57 +3,70 @@ import groovy.json.JsonBuilder
 import java.nio.charset.Charset
 
 import com.intland.codebeamer.persistence.dto.TrackerItemDto;
+import com.intland.codebeamer.event.util.VetoException;
 
-final def method = 'POST'
-final def apiUrl = 'http://115.178.77.208:8989/cb/rest/testRun'
 
-final def header = [
-        'Content-Type': 'application/x-www-form-urlencoded',
-        Authorization : 'Basic ' + 'admin:finger'.bytes.encodeBase64().toString()
-]
+try {
+    if (!beforeEvent) {
+        return
+    }
 
-final def body = [
-        'testSetId': String.valueOf(subject.id)
-//        'testSetId': '68725',
-]
+    final def method = 'POST'
+    final def apiUrl = 'http://115.178.77.208:8989/cb/rest/testRun'
 
-final def doInput = true
-final def doOutput = true
-final def useCache = true
+    final def header = [
+            'Content-Type': 'application/x-www-form-urlencoded',
+            Authorization : 'Basic ' + 'admin:finger'.bytes.encodeBase64().toString()
+    ]
 
-final def readTimeout = 10_000
-final def connectTimeout = 10_000
+    final def body = [
+            'testSetId': String.valueOf(subject.id)
+//            'testSetId': '68725',
+    ]
 
-// connection
-URL url = new URL(apiUrl)
-HttpURLConnection connection = url.openConnection() as HttpURLConnection
+    final def doInput = true
+    final def doOutput = true
+    final def useCache = true
 
-// option
-connection.setRequestMethod(method)
-connection.setDoInput(doInput)
-connection.setDoOutput(doOutput)
-connection.setUseCaches(useCache)
-connection.setDefaultUseCaches(useCache)
-connection.setReadTimeout(readTimeout)
-connection.setConnectTimeout(connectTimeout)
+    final def readTimeout = 10_000
+    final def connectTimeout = 10_000
 
-// header
-setHeader(connection, header)
+    // connection
+    URL url = new URL(apiUrl)
+    HttpURLConnection connection = url.openConnection() as HttpURLConnection
 
-// body
-setBody(connection, body)
+    // option
+    connection.setRequestMethod(method)
+    connection.setDoInput(doInput)
+    connection.setDoOutput(doOutput)
+    connection.setUseCaches(useCache)
+    connection.setDefaultUseCaches(useCache)
+    connection.setReadTimeout(readTimeout)
+    connection.setConnectTimeout(connectTimeout)
 
-// response
-def responseCode = connection.getResponseCode()
-println("responseCode: $responseCode, $connection.responseMessage")
-logger.info("responseCode: $responseCode, $connection.responseMessage")
+    // header
+    setHeader(connection, header)
 
-// request success
-if (responseCode == HttpURLConnection.HTTP_OK) {
-    def response = makeResponseJson(connection)
-    println("responseJson = ${response.toPrettyString()}")
-    logger.info("responseJson = ${response.toPrettyString()}")
+    // body
+    setBody(connection, body)
+
+    // response
+    def responseCode = connection.getResponseCode()
+    println("responseCode: $responseCode, $connection.responseMessage")
+    logger.info("responseCode: $responseCode, $connection.responseMessage")
+
+    // request success
+    if (responseCode == HttpURLConnection.HTTP_OK) {
+        def response = makeResponseJson(connection)
+        println("responseJson = ${response.toPrettyString()}")
+        logger.info("responseJson = ${response.toPrettyString()}")
+    }
+
+} catch (VetoException e) {
+    e.printStackTrace()
+    return
 }
+
 
 /**
  * set header payload.

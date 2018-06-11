@@ -266,7 +266,7 @@ while ( ... ) {
 ### 9. try-catch-finally 
 - `Java`와 비슷하다.
 
-```
+```groovy
 try {
     ...
     
